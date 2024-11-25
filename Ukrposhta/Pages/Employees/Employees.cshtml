@@ -1,0 +1,123 @@
+﻿@page
+@using Ukrposhta.Client.Pages.Employees;
+@model EmployeesPageModel
+@{
+    ViewData["Title"] = "Employees";
+    var firstDataItem = Model.EmployeesList.FirstOrDefault();
+}
+
+<h1>Employees</h1>
+
+<p>
+    <a asp-page="/Employees/CreateEmployee">Create New</a>
+</p>
+@if (Model.EmployeesList != null && firstDataItem != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.DateOfBirth)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.DateOfEmploiment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.Salary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.Department)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.Position)
+                </th>
+                <th></th>
+            </tr>
+            <tr>
+                <form method="post">
+                <th>
+                    <input asp-for="EmployeeFilter.FullName" class="form-control" />
+                </th>
+                <th>
+                    <input asp-for="EmployeeFilter.Address" class="form-control" />
+                </th>
+                <th>
+                    <input asp-for="EmployeeFilter.Phone" class="form-control" />
+                </th>
+                <th>
+                    <input asp-for="EmployeeFilter.DateOfBirth" class="form-control" />
+                </th>
+                <th>
+                    <input asp-for="EmployeeFilter.DateOfEmploiment" class="form-control" />
+                </th>
+                <th>
+                    <input asp-for="EmployeeFilter.Salary" class="form-control" />
+                </th>
+                <th>
+                    <input asp-for="EmployeeFilter.Description" class="form-control" />
+                </th>
+                <th>
+                    <select asp-for="EmployeeFilter.DepartmentId" asp-items="Model.DepartmentList" class="form-control"></select>
+                </th>
+                <th>
+                    <input asp-for="EmployeeFilter.Position" class="form-control" />
+                </th>
+                <th></th>
+                <input hidden type="submit" />
+                </form>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.EmployeesList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfEmploiment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" asp-page="/Employees/EditEmployee" asp-route-id="@item.Id">Edit</a>
+                        <form asp-page-handler="Delete" method="post" asp-route-id="@item.Id">
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

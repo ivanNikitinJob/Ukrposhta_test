@@ -1,0 +1,111 @@
+﻿@page
+@using Ukrposhta.Client.Pages
+@model ReportsPageModel
+
+@{
+    ViewData["Title"] = "Report";
+    var firstDataItem = Model.EmployeesList.FirstOrDefault();
+}
+<div class="row">
+    <label class="col-md-3">Salary Report</label>
+    <div class="col-md-6">
+        <form asp-page-handler="DepartmentSalary" method="post">
+            <label>Chose Department</label>
+            <select asp-for="DepartmentId" asp-items="Model.DepartmentList" class="form-control"></select>
+            <button class="btn btn-sm btn-primary">Get Salary Report</button>
+        </form>
+    </div>
+    @if (Model.SalaryReport != null)
+    {
+        <div class="col-md-3">
+            <p>Salary Summary</p>
+            <div>
+                <div> Department Name </div>
+                @Html.DisplayFor(modelItem => Model.SalaryReport.DepartmentName)
+                <div> Salary Sum </div>
+                @Html.DisplayFor(modelItem => Model.SalaryReport.SalarySum)
+                <div> Average Salary </div>
+                @Html.DisplayFor(modelItem => Model.SalaryReport.SalaryAverage)
+                <div> Employee Count </div>
+                @Html.DisplayFor(modelItem => Model.SalaryReport.EmployeeCount)
+                <div> Positions Count </div>
+                @Html.DisplayFor(modelItem => Model.SalaryReport.PositionsCount)
+            </div>
+            <form asp-page-handler="SaveFile" asp-route-id="@Model.DepartmentId" method="post">
+                <button class="btn btn-sm btn-primary">Save Report To .txt</button>
+            </form>
+        </div>
+    }
+</div>
+
+
+@if (Model.EmployeesList != null && firstDataItem != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.DateOfBirth)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.DateOfEmploiment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.Salary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.Department)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstDataItem.Position)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.EmployeesList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfEmploiment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

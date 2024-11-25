@@ -1,0 +1,65 @@
+﻿@page "{id:int}"
+@using Ukrposhta.Client.Pages.Employees;
+@model EditEmployeeModel
+@{
+    ViewData["Title"] = "EditEmployee";
+}
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="Employee.FullName"></label>
+            <input asp-for="Employee.FullName" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="Employee.Address"></label>
+            <input asp-for="Employee.Address" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="Employee.Phone"></label>
+            <input asp-for="Employee.Phone" class="form-control" type="tel" maxlength="12" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="Employee.DateOfBirth"></label>
+            <input asp-for="Employee.DateOfBirth" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="Employee.DateOfEmploiment"></label>
+            <input asp-for="Employee.DateOfEmploiment" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="Employee.Salary"></label>
+            <input asp-for="Employee.Salary" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="Employee.Description"></label>
+            <input asp-for="Employee.Description" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="Employee.Department"></label>
+            <select asp-for="Employee.DepartmentId" asp-items="Model.DepartmentList" class="form-control" ></select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="Employee.Position"></label>
+            <input asp-for="Employee.Position" class="form-control" />
+        </div>
+    </div><br />
+    <input hidden asp-for="Employee.Id" />
+    <input type="submit" value="Save" class="btn btn-primary" />
+    <a class="btn btn-default" asp-page="/Employees/Employees">Cancel</a>
+</form>
