@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  ukrposhta.client:
+    image: ${DOCKER_REGISTRY-}ukrposhtaclient
+    build:
+      context: .
+      dockerfile: Ukrposhta\Dockerfile
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

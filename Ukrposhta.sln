@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ukrposhta.Entities", "Ukrpo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ukrposhta.Models", "Ukrposhta.Models\Ukrposhta.Models.csproj", "{FDF36F4F-C2C8-47B2-B844-ECCC1A1F1ADE}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{938FBE11-051A-4B95-A518-F62F5DD516E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FDF36F4F-C2C8-47B2-B844-ECCC1A1F1ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDF36F4F-C2C8-47B2-B844-ECCC1A1F1ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDF36F4F-C2C8-47B2-B844-ECCC1A1F1ADE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{938FBE11-051A-4B95-A518-F62F5DD516E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{938FBE11-051A-4B95-A518-F62F5DD516E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{938FBE11-051A-4B95-A518-F62F5DD516E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{938FBE11-051A-4B95-A518-F62F5DD516E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
